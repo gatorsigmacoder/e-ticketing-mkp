@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "5e9923ab-5df5-413c-ae8f-68676a008bd3",
+		"name": "e-Ticketing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37536108",
+		"_collection_link": "https://api-penomoran.postman.co/workspace/API-Penomoran-Workspace~ee807982-01a5-4545-87e3-dc7de98fe663/collection/37536108-5e9923ab-5df5-413c-ae8f-68676a008bd3?action=share&source=collection_link&creator=37536108"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"    const data = pm.response.json();\r",
+									"\r",
+									"    pm.environment.set(\"token\", data.result.token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admintest@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}auth/login",
+							"host": [
+								"{{baseUrl}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admintest@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}auth/login",
+									"host": [
+										"{{baseUrl}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Oct 2025 12:40:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Success\",\n    \"result\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWwiOiJhZG1pbnRlc3RAbWFpbC5jb20iLCJleHAiOjE3NTkzNjU2MjAsInJvbGUiOiJhZG1pbiIsInN1YiI6ImI2ZjVlOTY5LWY0ZmItNDFlMC05YWEyLTBhMmUyY2UwYmExNyIsInRva2VuX3ZlcnNpb24iOjF9.XT1bpVWTQXf0GOKpKi-ewh5tgRDH6p5SGIL1KnmH-ZM\"\n    },\n    \"meta_data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Terminal",
+			"item": [
+				{
+					"name": "Create Terminal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Terminal G",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}admin/terminal",
+							"host": [
+								"{{baseUrl}}admin"
+							],
+							"path": [
+								"terminal"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Terminal G",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}admin/terminal",
+									"host": [
+										"{{baseUrl}}admin"
+									],
+									"path": [
+										"terminal"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Oct 2025 12:53:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Success\",\n    \"result\": {\n        \"name\": \"Terminal G\"\n    },\n    \"meta_data\": null\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
