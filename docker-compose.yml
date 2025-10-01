@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: pg_database
+    restart: always
+    environment:
+      POSTGRES_USER: postgres # Replace with your desired username
+      POSTGRES_PASSWORD: postgres # Replace with your desired password
+      POSTGRES_DB: ticketing_db # Replace with your desired database name
+    ports:
+      - "2345:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
